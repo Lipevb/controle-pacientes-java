@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -63,20 +64,49 @@ public class MainPage extends Application {
         formContainer.setStyle("-fx-background-color: #fff; -fx-border-color: #ccc;");
         formContainer.setVisible(false);
 
-       
+        //form
         VBox form = new VBox(10);
         form.setPadding(new Insets(10));
         Label formTitle = new Label("Cadastrar Pacientes");
         formTitle.setStyle("-fx-font-size: 18px;");
+        
         TextField nome = new TextField();
         nome.setPromptText("Nome");
-        TextField idade = new TextField();
-        idade.setPromptText("Idade");
+        TextField nascimento = new TextField();
+        nascimento.setPromptText("Data de nascimento");
         TextField endereco = new TextField();
         endereco.setPromptText("Endereço");
+        TextField cep = new TextField();
+        cep.setPromptText("CEP");
+        TextField estado = new TextField();
+        estado.setPromptText("Estado");
+        TextField cidade = new TextField();
+        cidade.setPromptText("Cidade");
+        TextField bairro = new TextField();
+        bairro.setPromptText("Bairro");
+        TextField cpf = new TextField();
+        cpf.setPromptText("CPF");
+        TextField email = new TextField();
+        email.setPromptText("Email");
+        TextField telefoneResidencial = new TextField();
+        telefoneResidencial.setPromptText("Telefone Residencial");
+        TextField celular = new TextField();
+        celular.setPromptText("Celular");
+        TextField dataNascimento = new TextField();
+        dataNascimento.setPromptText("Data de Nascimento");
+        TextField estadoCivil = new TextField();
+        estadoCivil.setPromptText("Estado Civil");
+        TextField genero = new TextField();
+        genero.setPromptText("Gênero");
+        TextField rg = new TextField();
+        rg.setPromptText("RG");
+        TextField codigo = new TextField();
+        codigo.setPromptText("Código");
+        
         Button cadastrar = new Button("Cadastrar");
-        form.getChildren().addAll(formTitle, nome, idade, endereco, cadastrar);
-
+        form.getChildren().addAll(formTitle, nome, nascimento, endereco, cep, estado,cidade,bairro,cpf, email, telefoneResidencial, celular, 
+        dataNascimento, estadoCivil, genero, rg,codigo, cadastrar);
+        //from
     
         sidebar.getChildren().addAll(logo, menuItem);
         submenuSidebar.getChildren().addAll(submenuItem);
@@ -84,14 +114,24 @@ public class MainPage extends Application {
         root.setLeft(sidebar);
         root.setCenter(submenuSidebar);
         root.setRight(formContainer);
-
-        
         menuItem.setOnMouseClicked(e -> {
             submenuSidebar.setVisible(!submenuSidebar.isVisible());
         });
         submenuItem.setOnMouseClicked(e -> {
             formContainer.setVisible(!formContainer.isVisible());
         });
+
+         //scrollbar
+         ScrollPane scrollPane = new ScrollPane();
+         scrollPane.setContent(form);
+         scrollPane.setFitToWidth(true);
+         scrollPane.setFitToHeight(true);
+         scrollPane.setPrefWidth(400);
+         scrollPane.setPrefHeight(300);
+ 
+         formContainer.getChildren().clear();
+         formContainer.getChildren().add(scrollPane);
+         
        
 
         Scene scene = new Scene(root, 800, 600);
@@ -102,5 +142,6 @@ public class MainPage extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    
     }
 }
