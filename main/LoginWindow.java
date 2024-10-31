@@ -70,9 +70,9 @@ public class LoginWindow extends Application {
             String password = passwordField.getText();
             if (authenticateUser(username, password)) {
                 // Abre a nova tela HomeScreen
-                HomeScreen homeScreen = new HomeScreen();
+                MainPage MainPage = new MainPage();
                 try {
-                    homeScreen.start(new Stage());  
+                    MainPage.start(new Stage());  
                     primaryStage.close(); 
                 } catch (Exception ex) {
                     ex.printStackTrace();
